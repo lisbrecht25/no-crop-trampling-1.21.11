@@ -1,15 +1,15 @@
 {
 	"schemaVersion": 1,
 	"id": "no-trampling",
-	"version": "${version}",
+	"version": "1.0",
 	"name": "No Crop Trampling",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "This mod disables crop trampling by entities by default and allows the user to toggle through a gamerule.",
 	"authors": [
-		"Me!"
+		"Stxtic01"
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"sources": "https://github.com/lisbrecht25/no-crop-trampling-1.21.11.git"
 	},
 	"license": "CC0-1.0",
 	"icon": "assets/no-trampling/icon.png",
