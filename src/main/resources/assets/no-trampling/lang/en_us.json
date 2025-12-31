@@ -1,3 +1,7 @@
 {
-  "gamerule.notrampling.do_crop_trampling": "Allow Crop Trampling"
+  "text.autoconfig.notrampling.title": "No Trampling Config",
+  "text.autoconfig.notrampling.option.defaultProtectionLevel": "Default Protection Level",
+  "text.autoconfig.notrampling.option.defaultProtectionLevel.@Tooltip": "The default protection level when starting a new world",
+  "text.autoconfig.notrampling.option.overrideGamerule": "Override Gamerule",
+  "text.autoconfig.notrampling.option.overrideGamerule.@Tooltip": "If enabled, the config setting will override the gamerule"
 }

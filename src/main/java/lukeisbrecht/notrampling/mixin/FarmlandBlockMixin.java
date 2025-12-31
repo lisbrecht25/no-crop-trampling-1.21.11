@@ -19,12 +19,20 @@ public class FarmlandBlockMixin {
     @Inject(method = "onLandedUpon", at = @At("HEAD"), cancellable = true)
     private void preventTrample(World world, BlockState state, BlockPos pos, Entity entity, double fallDistance, CallbackInfo ci) {
         if (world instanceof ServerWorld serverWorld) {
-            TrampleProtection protection = serverWorld.getGameRules().getValue(NoCropTrampling.CROP_TRAMPLING_PROTECTION);
+            TrampleProtection protection;
+
+            if (NoCropTrampling.CONFIG.overrideGamerule) {
+                protection = NoCropTrampling.CONFIG.defaultProtectionLevel;
+            } else {
+                protection = serverWorld.getGameRules().getValue(NoCropTrampling.CROP_TRAMPLING_PROTECTION);
+            }
+
             boolean shouldProtect = switch (protection) {
                 case ALL -> true;
                 case MOBS_ONLY -> !(entity instanceof PlayerEntity);
                 case NONE -> false;
             };
+
             if (shouldProtect) {
                 ci.cancel();
                 entity.handleFallDamage(fallDistance, 1.0F, world.getDamageSources().fall());
