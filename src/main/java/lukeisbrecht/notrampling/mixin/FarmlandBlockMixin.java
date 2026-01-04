@@ -1,10 +1,11 @@
 package lukeisbrecht.notrampling.mixin;
 
 import lukeisbrecht.notrampling.NoCropTrampling;
-import lukeisbrecht.notrampling.TrampleProtection;
+import lukeisbrecht.notrampling.config.TrampleProtection;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.FarmlandBlock;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
@@ -24,12 +25,13 @@ public class FarmlandBlockMixin {
             if (NoCropTrampling.CONFIG.overrideGamerule) {
                 protection = NoCropTrampling.CONFIG.defaultProtectionLevel;
             } else {
-                protection = serverWorld.getGameRules().getValue(NoCropTrampling.CROP_TRAMPLING_PROTECTION);
+                protection = lukeisbrecht.notrampling.config.TrampleProtectionGameRules.getTrampleProtectionLevel(serverWorld);
             }
 
             boolean shouldProtect = switch (protection) {
-                case ALL -> true;
+                case FULL -> true;
                 case MOBS_ONLY -> !(entity instanceof PlayerEntity);
+                case PLAYERS_ONLY -> !(entity instanceof MobEntity);
                 case NONE -> false;
             };
 
