@@ -1,5 +1,6 @@
 package lukeisbrecht.notrampling;
 
+import lukeisbrecht.notrampling.command.TramplingProtectionCommand;
 import lukeisbrecht.notrampling.config.NoCropTramplingConfig;
 import lukeisbrecht.notrampling.config.TrampleProtection;
 import lukeisbrecht.notrampling.config.TrampleProtectionGameRules;
@@ -8,6 +9,7 @@ import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
 import net.fabricmc.api.ModInitializer;
 
 
+import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.fabricmc.fabric.api.gamerule.v1.GameRuleFactory;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.GameRules;
@@ -26,5 +28,7 @@ public class NoCropTrampling implements ModInitializer {
 		CONFIG = AutoConfig.getConfigHolder(NoCropTramplingConfig.class).getConfig();
 
 		TrampleProtectionGameRules.register();
+
+		CommandRegistrationCallback.EVENT.register(TramplingProtectionCommand::register);
 	}
 }
