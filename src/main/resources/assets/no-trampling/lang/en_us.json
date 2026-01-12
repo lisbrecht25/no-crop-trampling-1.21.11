@@ -1,5 +1,5 @@
 {
   "text.autoconfig.notrampling.title": "No Trampling Config",
   "text.autoconfig.notrampling.option.defaultProtectionLevel": "Default Protection Level",
-  "text.autoconfig.notrampling.option.overrideGamerule": "Override Gamerule"
+  "text.autoconfig.notrampling.option.overrideGamerule": "Override Command"
 }
